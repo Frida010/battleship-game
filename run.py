@@ -2,20 +2,18 @@
 
 import random
 
-# Create square board
-def build_board(dims):
-    return [['0' for count in range(dims)] for count in range(dims)]
+# Create random ships on game board
+def create_ship():
+    return random.randint(0, 5), random.randint(0, 5)
 
-build_board(4)
+def play_game():
+    game_board = [["O", "O", "O", "O", "O"],
+                  ["O", "O", "O", "O", "O"],
+                  ["O", "O", "O", "O", "O"],
+                  ["O", "O", "O", "O", "O"],
+                  ["O", "O", "O", "O", "O"]]
 
-[['0','0','0','0'],
-['0','0','0','0'],
-['0','0','0','0'],
-['0','0','0','0']]
-
-def print_board(board):
-    for b in board:
+    for b in game_board:
         print(*b)
 
-board = build_board(4)
-print_board(board)
+    
