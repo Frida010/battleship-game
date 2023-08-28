@@ -12,3 +12,10 @@ build_board(4)
 ['0','0','0','0'],
 ['0','0','0','0'],
 ['0','0','0','0']]
+
+def print_board(board):
+    for b in board:
+        print(*b)
+
+board = build_board(4)
+print_board(board)
