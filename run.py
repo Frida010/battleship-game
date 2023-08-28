@@ -1,3 +1,14 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+# Import random package to be able to create random integers
+
+import random
+
+# Create square board
+def build_board(dims):
+    return [['0' for count in range(dims)] for count in range(dims)]
+
+build_board(4)
+
+[['0','0','0','0'],
+['0','0','0','0'],
+['0','0','0','0'],
+['0','0','0','0']]
