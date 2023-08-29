@@ -8,7 +8,7 @@ def create_ship():
 
 
 print("Welcome to the battleship game!"
-       "\nYour task is to find and destroy all the ships on the map.\n")
+       "\nYour task is to find and destroy all the ships on the map.")
 
 print("""\nIntroductions:
 \nYou have 10 ammo and there are 3 hidden ships on the map.
@@ -34,3 +34,52 @@ def play_game():
     ammo = 10
 
     
+    while ammo:
+        try:
+            # Tells the user to enter number between 1-5.
+            row = int(input("Enter a row number between 1 and 5 ->: "))
+            column = int(input("Enter a column number between 1 and 5 ->: "))
+        except ValueError:
+            # Notify the user if letters were inserted insted of number
+            print("Only enter numbers!")
+            continue
+        
+        # Checks if users number is in the right range, else tell the user. 
+        if row not in range(1, 6) or column not in range(1, 6):
+            print("\nThe number must be between 1 and 5!")
+            continue
+
+        # Reducing number to desired index
+        row = row -1
+        column = column -1
+        # Checks if user already selected that spot.
+        if game_board[row][column] == "-" or game_board[row][column] == "X":
+            print("\nYou have already shoot that place!\n")
+            continue
+        # Checks if user hit a ship.
+        elif (row, column) == ship1 or (row, column) == ship2 or (row, column) == ship3:
+            print("\nBOOM! You hit a ship! You were rewared a new ammo!\n")
+            game_board[row][column] = "X"
+            ships_left -= 1
+            # Congratulate the user when all ships are gone
+            if ships_left == 0:
+                print("Congratulation! You won!")
+                play_again()
+        # Tell the user if the miss and subtract ammo by one.        
+        else:
+            print("\nYou missed!\n")
+            game_board[row][column] = "-"
+            ammo -= 1
+
+        for b in game_board:
+            print(*b)
+
+        # Tells the user how much ammo and ships is left.
+        print(f"Ammo left: {ammo} | Ships left: {ships_left}")
+
+    play_again()
+
+
+if __name__ == "__main__":
+    play_game()
+
