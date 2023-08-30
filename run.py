@@ -6,7 +6,16 @@ import random
 def create_ship():
     return random.randint(0, 5), random.randint(0, 5)
 
+# Asks user to play again or quit game. 
+def play_again():
+    try_again = input("Want to play again? <Y>es or <N>o? ->: ")
+    if try_again == "y":
+        play_game()
+    else:
+        print("Goodbye!")
+        return
 
+# Instruction and welcome message. 
 print("Welcome to the battleship game!"
        "\nYour task is to find and destroy all the ships on the map.")
 
@@ -17,6 +26,7 @@ For example:
 The first row and first column, you write 1 and 1.
 Good luck!\n""")
 
+# Game board
 def play_game():
     game_board = [["O", "O", "O", "O", "O"],
                   ["O", "O", "O", "O", "O"],
@@ -65,7 +75,7 @@ def play_game():
             if ships_left == 0:
                 print("Congratulation! You won!")
                 play_again()
-        # Tell the user if the miss and subtract ammo by one.        
+        # Tell the user if they miss and subtract ammo by one.        
         else:
             print("\nYou missed!\n")
             game_board[row][column] = "-"
