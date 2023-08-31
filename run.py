@@ -9,7 +9,7 @@ def create_ship():
 
 # Asks user to play again or quit game.
 def play_again():
-    try_again = input("Want to play again? <Y>es or <N>o? ->: ")
+    try_again = input("Want to play again? <Y>es or <N>o? ->:\n")
     if try_again == "y":
         play_game()
     else:
@@ -49,8 +49,8 @@ def play_game():
     while ammo:
         try:
             # Tells the user to enter number between 1-5.
-            row = int(input("Enter a row number between 1 and 5 ->: "))
-            column = int(input("Enter a column number between 1 and 5 ->: "))
+            row = int(input("Enter a row number between 1 and 5 ->:\n"))
+            column = int(input("Enter a column number between 1 and 5 ->:\n"))
         except ValueError:
             # Notify the user if letters were inserted insted of number
             print("Only enter numbers!")
